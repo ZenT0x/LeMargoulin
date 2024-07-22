@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class script_deplacement : NetworkBehaviour
+public class Deplacement : NetworkBehaviour
 {
     GameObject Joueur;
     public float vitesse;

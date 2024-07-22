@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Script_interaction : MonoBehaviour
+public class Interaction : MonoBehaviour
 {
     private bool IsPlayerOnTrigger = false;
     public GameObject Siphano;
