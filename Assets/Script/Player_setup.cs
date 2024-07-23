@@ -1,7 +1,7 @@
 using Mirror;
 using UnityEngine;
 
-public class script_playersetup : NetworkBehaviour
+public class Player_setup : NetworkBehaviour
 {
     [SerializeField]
     Behaviour[] componentsToDisable;
