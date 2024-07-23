@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class GameManager : NetworkBehaviour
 {
-    public PlayerDeck playerDeckPrefab;
+    //public PlayerDeck playerDeckPrefab;
     public DiscardPile discardPilePrefab;
     public WreckDraw wreckDrawPrefab;
     public WeatherDraw weatherDrawPrefab;
 
-    private PlayerDeck playerDeck;
+    //private PlayerDeck playerDeck;
     private DiscardPile discardPile;
     private WreckDraw wreckDraw;
     private WeatherDraw weatherDraw;
@@ -22,17 +22,17 @@ public class GameManager : NetworkBehaviour
     {
         numberOfPlayers = players.Count;
 
-        playerDeck = Instantiate(playerDeckPrefab);
+        //playerDeck = Instantiate(playerDeckPrefab);
         discardPile = Instantiate(discardPilePrefab);
         wreckDraw = Instantiate(wreckDrawPrefab);
         weatherDraw = Instantiate(weatherDrawPrefab);
 
-        NetworkServer.Spawn(playerDeck.gameObject);
+        //NetworkServer.Spawn(playerDeck.gameObject);
         NetworkServer.Spawn(discardPile.gameObject);
         NetworkServer.Spawn(wreckDraw.gameObject);
         NetworkServer.Spawn(weatherDraw.gameObject);
 
-        playerDeck.discardPile = discardPile;
+        //playerDeck.discardPile = discardPile;
 
         StartGame(players);
     }
@@ -47,11 +47,11 @@ public class GameManager : NetworkBehaviour
     {
         if (isServer)
         {
-            playerDeck.UseCard(card);
+            //playerDeck.UseCard(card);
         }
         else
         {
-            playerDeck.CmdUseCard(card);
+            //playerDeck.CmdUseCard(card);
         }
     }
 

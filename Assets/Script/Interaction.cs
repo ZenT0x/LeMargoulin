@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     private bool IsPlayerOnTrigger = false;
+    public GameObject Canva;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class Interaction : MonoBehaviour
         {
             if (Input.GetKeyDown("e"))
             {
+                Canva.SetActive(true);
             }
         }
     }
@@ -27,8 +29,6 @@ public class Interaction : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             IsPlayerOnTrigger = true;
-            Transform childTransform = transform.GetChild(0);
-            childTransform.gameObject.SetActive(true);
         }
     }
     void OnTriggerExit2D(Collider2D col)
@@ -36,8 +36,6 @@ public class Interaction : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             IsPlayerOnTrigger = false;
-            Transform childTransform = transform.GetChild(0);
-            childTransform.gameObject.SetActive(false);
         }
     }
 }
