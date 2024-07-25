@@ -19,7 +19,14 @@ public class Interaction : MonoBehaviour
         {
             if (Input.GetKeyDown("e"))
             {
-                Canva.SetActive(true);
+                if (Canva.activeSelf)
+                {
+                    Canva.SetActive(false);
+                }
+                else
+                {
+                    Canva.SetActive(true);
+                }
             }
         }
     }

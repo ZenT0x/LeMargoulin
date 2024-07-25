@@ -6,6 +6,7 @@ public class Branche : MonoBehaviour
 {
     GameObject branche;
     public bool isTrap = false;
+    public GameObject Canva;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class Branche : MonoBehaviour
         {
             Debug.Log("Perdu");
             branche.SetActive(false);
+            Canva.SetActive(false);
         }
         else
         {
