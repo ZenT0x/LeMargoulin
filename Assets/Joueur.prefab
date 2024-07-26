@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 5257240630108357023}
   - component: {fileID: -3339852497588267973}
   - component: {fileID: 6632897150749240060}
+  - component: {fileID: 2556746609592966420}
   - component: {fileID: -1451162126163250430}
   - component: {fileID: 1333650766995944941}
   - component: {fileID: 6086509242560331422}
@@ -262,6 +263,21 @@ MonoBehaviour:
   componentsToDisable:
   - {fileID: -3339852497588267973}
   - {fileID: 3765205438280028718}
+  - {fileID: 2556746609592966420}
+--- !u!114 &2556746609592966420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3549642231012649220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72a933350696e0488eaf4ef3977abff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childBois: {fileID: 0}
+  childBouffe: {fileID: 0}
 --- !u!114 &-1451162126163250430
 MonoBehaviour:
   m_ObjectHideFlags: 0

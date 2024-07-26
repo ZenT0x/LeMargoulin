@@ -4,45 +4,57 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    private bool IsPlayerOnTrigger = false;
-    public GameObject Canva;
+    private bool isBois = false;
+    private bool isBouffe = false;
+    public GameObject childBois;
+    public GameObject childBouffe;
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayerOnTrigger)
+        if (Input.GetKeyDown("e"))
         {
-            if (Input.GetKeyDown("e"))
+            if (isBois)
             {
-                if (Canva.activeSelf)
-                {
-                    Canva.SetActive(false);
-                }
-                else
-                {
-                    Canva.SetActive(true);
-                }
+                childBois.SetActive(!childBois.activeSelf); // Toggle the active state
+            }
+            if (isBouffe)
+            {
+                childBouffe.SetActive(!childBouffe.activeSelf); // Toggle the active state
             }
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag("HitBoxBois"))
         {
-            IsPlayerOnTrigger = true;
+            isBois = true;
+            childBois = col.transform.Find("CanvasBois")?.gameObject; // Replace with the actual child name
+        }
+        if (col.CompareTag("HitBoxBouffe"))
+        {
+            isBouffe = true;
+            childBouffe = col.transform.Find("CanvasBouffe")?.gameObject; // Replace with the actual child name
         }
     }
+
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag("HitBoxBois"))
         {
-            IsPlayerOnTrigger = false;
+            isBois = false;
+            childBois.SetActive(false);
+        }
+        if (col.CompareTag("HitBoxBouffe"))
+        {
+            isBouffe = false;
+            childBouffe.SetActive(false);
         }
     }
 }
