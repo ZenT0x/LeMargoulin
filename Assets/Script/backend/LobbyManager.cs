@@ -30,6 +30,7 @@ public class LobbyManager : NetworkBehaviour
 
             }
         }
+        // If the owner of the lobby is the local player, show the start button
         if (owner == NetworkClient.localPlayer.gameObject)
         {
             startButton.SetActive(true);
