@@ -5,8 +5,17 @@ using System.Collections.Generic;
 public class PlayerDeck : NetworkBehaviour
 {
     private Deck deck = new Deck();
-    private List<Card> playerHand = new List<Card>();
+    public  List<Card> playerHand = new List<Card>();
+
     public DiscardPile discardPile;
+    public WreckDraw wreckDraw;
+
+    void Start()
+    {
+
+    }
+
+
 
     public override void OnStartServer()
     {
@@ -18,14 +27,10 @@ public class PlayerDeck : NetworkBehaviour
         deck.Shuffle();
     }
 
-    public Card DrawCard()
+    public void  DrawWreckCard()
     {
-        Card drawnCard = deck.DrawCard();
-        if (drawnCard != null)
-        {
-            playerHand.Add(drawnCard);
-        }
-        return drawnCard;
+        playerHand.Add(deck.DrawCard());
+        Debug.Log("Tirage de carte épave");
     }
 
     [Command]

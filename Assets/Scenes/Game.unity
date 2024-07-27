@@ -31949,6 +31949,9 @@ GameObject:
   - component: {fileID: 1915192250}
   - component: {fileID: 1915192249}
   - component: {fileID: 1915192248}
+  - component: {fileID: 1915192253}
+  - component: {fileID: 1915192252}
+  - component: {fileID: 1915192251}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -31988,9 +31991,11 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  discardPilePrefab: {fileID: 0}
-  wreckDrawPrefab: {fileID: 0}
-  weatherDrawPrefab: {fileID: 0}
+  numberOfWrecksCardsPerPlayer: 4
+  allPlayers: []
+  discardPile: {fileID: 1915192253}
+  wreckDraw: {fileID: 1915192252}
+  weatherDraw: {fileID: 1915192251}
   numberOfPlayers: 0
 --- !u!4 &1915192250
 Transform:
@@ -32007,6 +32012,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1915192251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915192247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e02cad6d68391bb83aa492a9565993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
+--- !u!114 &1915192252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915192247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2eb468ee55e1486fb34215ea50894cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
+  resourcePath: Cards/objects/wreck
+--- !u!114 &1915192253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915192247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe79536654474b70682ccba790e0ab71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1919538972
 GameObject:
   m_ObjectHideFlags: 0

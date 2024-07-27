@@ -8,9 +8,7 @@ public class LobbyManager : NetworkBehaviour
     public GameObject owner;
     public List<GameObject> players = new List<GameObject>();
     public GameObject LocalPlayer;
-
     public GameObject startButton;
-
 
     void Start()
     {

@@ -31,7 +31,6 @@ public class Deck : MonoBehaviour
 
     public virtual void AddCard(Card card)
     {
-        Debug.Log("Adding card to deck");
         cards.Add(card);
     }
 

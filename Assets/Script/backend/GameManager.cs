@@ -1,38 +1,46 @@
 using Mirror;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class GameManager : NetworkBehaviour
 {
-    //public PlayerDeck playerDeckPrefab;
-    public DiscardPile discardPilePrefab;
-    public WreckDraw wreckDrawPrefab;
-    public WeatherDraw weatherDrawPrefab;
+    public int numberOfWrecksCardsPerPlayer = 4;
 
-    //private PlayerDeck playerDeck;
-    private DiscardPile discardPile;
-    private WreckDraw wreckDraw;
-    private WeatherDraw weatherDraw;
+    public List<GameObject> allPlayers;
+
+    public DiscardPile discardPile;
+    public WreckDraw wreckDraw;
+    public WeatherDraw weatherDraw;
 
     [SyncVar]
     public int numberOfPlayers;
+
+    void Start()
+    {
+        if (isServer)
+        {
+            allPlayers = GameObject.FindGameObjectsWithTag("Player").ToList();
+            Initialize(allPlayers);
+        }
+    }
 
     [Server]
     public void Initialize(List<GameObject> players)
     {
         numberOfPlayers = players.Count;
 
-        //playerDeck = Instantiate(playerDeckPrefab);
-        discardPile = Instantiate(discardPilePrefab);
-        wreckDraw = Instantiate(wreckDrawPrefab);
-        weatherDraw = Instantiate(weatherDrawPrefab);
+        foreach (GameObject player in players)
+        {
+            PlayerDeck playerDeck = player.GetComponent<PlayerDeck>();
+            for (int i = 0; i < numberOfWrecksCardsPerPlayer; i++)
+            {
+                playerDeck.DrawWreckCard();
+            }
+        }
+       
 
-        //NetworkServer.Spawn(playerDeck.gameObject);
-        NetworkServer.Spawn(discardPile.gameObject);
-        NetworkServer.Spawn(wreckDraw.gameObject);
-        NetworkServer.Spawn(weatherDraw.gameObject);
 
-        //playerDeck.discardPile = discardPile;
 
         StartGame(players);
     }
