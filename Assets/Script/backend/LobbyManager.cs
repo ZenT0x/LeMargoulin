@@ -40,4 +40,21 @@ public class LobbyManager : NetworkBehaviour
             startButton.SetActive(false);
         }
     }
+    public void StartGame()
+    {
+        if (isServer)
+        {
+            RpcStartGame();
+        }
+    }
+
+    [ClientRpc]
+    void RpcStartGame()
+    {
+        if (isServer)
+        {
+            // Change scene for all players
+            NetworkManager.singleton.ServerChangeScene("Game");
+        }
+    }
 }
