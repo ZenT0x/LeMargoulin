@@ -2,17 +2,35 @@ using Mirror;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using System.Linq;
+using Unity.VisualScripting;
 
 public class GameManager : NetworkBehaviour
 {
-    private static GameManager instance;
-    public int numberOfWrecksCardsPerPlayer = 4;
     public List<GameObject> connectedPlayers = new List<GameObject>();
 
+    // EN : Variables that point to the different objects
+    // FR : Variables qui pointent vers les différents objets
     public DiscardPile discardPile;
     public WreckDraw wreckDraw;
     public WeatherDraw weatherDraw;
+    private static GameManager instance;
+
+    // EN : Varaibles of the game
+    // FR : Variables du jeu
+    [HideInInspector]
+    public int numberOfWrecksCardsPerPlayer = 4;
+
+    [SyncVar] 
+    public int numberOfWood;
+
+    [SyncVar]
+    public int numberOfFood;
+
+    [SyncVar]
+    public int numberOfWater;
+
+    [SyncVar]
+    public int numberOfPlayers;
 
     public static GameManager Instance
     {
@@ -26,30 +44,24 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    [SyncVar]
-    public int numberOfPlayers = 1;
-
     void Start()
     {
-
         if (isServer)
             {
-                StartCoroutine(WaitForPlayers());
+                // EN : We wait a little bit to make sure that all players are connected
+                // FR : On attend un peu pour être sûr que tous les joueurs sont connectés
+                Invoke("FindPlayerAndLaunch", 0.1f); 
             }
     }
-
-    private IEnumerator WaitForPlayers()
+    private void FindPlayerAndLaunch()
     {
-        yield return new WaitForSeconds(1);
-        var playersConnecting = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var player in playersConnecting)
+        var playersFound = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var player in playersFound)
         {
             PlayerConnected(player);
         }
         InitializeInGame(connectedPlayers);
     }
-
-
 
     [Server]
     public void InitializeInGame(List<GameObject> players)
@@ -65,16 +77,10 @@ public class GameManager : NetworkBehaviour
                 playerDeck.DrawWreckCard();
             }
         }
-        StartGame(players);
+      
     }
 
     [Server]
-    void StartGame(List<GameObject> players)
-    {
-
-    }
-
-        [Server]
     public void PlayerConnected(GameObject player)
     {
         if (!connectedPlayers.Contains(player))
@@ -84,31 +90,7 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-        [Server]
-    private bool IsAllPlayersConnected()
-    {
-        if (connectedPlayers.Count == numberOfPlayers)
-        {
-            return true;
-        }
-        return false;
-    }
+    void Update(){
 
-    public void UseCard(Card card)
-    {
-        if (isServer)
-        {
-            //playerDeck.UseCard(card);
-        }
-        else
-        {
-            //playerDeck.CmdUseCard(card);
-        }
     }
-
-    public Card RetrieveCardFromDiscard()
-    {
-        return discardPile.RetrieveCard();
-    }
-
 }
