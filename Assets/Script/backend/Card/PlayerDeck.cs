@@ -33,7 +33,7 @@ public class PlayerDeck : NetworkBehaviour
 
     public void  DrawWreckCard()
     {
-        playerHand.Add(deck.DrawCard());
+        playerHand.Add(wreckDraw.DrawCard());
         Debug.Log("Tirage de carte épave");
     }
 
