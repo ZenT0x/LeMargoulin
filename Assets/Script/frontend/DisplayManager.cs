@@ -13,6 +13,8 @@ public class DisplayManager : MonoBehaviour
 
     void Start()
     {
+        // EN : Wait for the GameManager to be initialized
+        // FR : Attend que le GameManager soit initialisé
         Invoke("getInstanceOfGameManager", 0.1f);
         
         textWater = GameObject.Find("Text Water").GetComponent<TextMeshProUGUI>();
