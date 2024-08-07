@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
+    private bool canPlay = true;
     private bool isBois = false;
     private bool isBouffe = false;
     public GameObject childBois;
@@ -21,23 +22,39 @@ public class Interaction : MonoBehaviour
         {
             if (isBois)
             {
-                childBois.SetActive(!childBois.activeSelf); // Toggle the active state
+                if (childBois.activeSelf)
+                {
+                    childBois.SetActive(false);
+                    canPlay = false;
+                }
+                else if (canPlay)
+                {
+                    childBois.SetActive(true);
+                }
             }
             if (isBouffe)
             {
-                childBouffe.SetActive(!childBouffe.activeSelf); // Toggle the active state
+                if (childBouffe.activeSelf)
+                {
+                    childBouffe.SetActive(false);
+                    canPlay = false;
+                }
+                else if (canPlay)
+                {
+                    childBouffe.SetActive(true);
+                }
             }
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("HitBoxBois"))
+        if (col.CompareTag("HitBoxBois") && canPlay)
         {
             isBois = true;
             childBois = col.transform.Find("CanvasBois")?.gameObject; // Replace with the actual child name
         }
-        if (col.CompareTag("HitBoxBouffe"))
+        if (col.CompareTag("HitBoxBouffe") && canPlay)
         {
             isBouffe = true;
             childBouffe = col.transform.Find("CanvasBouffe")?.gameObject; // Replace with the actual child name
@@ -50,11 +67,13 @@ public class Interaction : MonoBehaviour
         {
             isBois = false;
             childBois.SetActive(false);
+            canPlay = false;
         }
         if (col.CompareTag("HitBoxBouffe"))
         {
             isBouffe = false;
             childBouffe.SetActive(false);
+            canPlay = false;
         }
     }
 }

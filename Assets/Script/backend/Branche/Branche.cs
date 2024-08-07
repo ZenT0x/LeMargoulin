@@ -7,6 +7,7 @@ public class Branche : MonoBehaviour
     GameObject branche;
     public bool isTrap = false;
     public GameObject Canva;
+    public FadeUI fadeUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,10 @@ public class Branche : MonoBehaviour
         {
             Debug.Log("Gagné");
             branche.SetActive(false);
+            if (fadeUI != null)
+            {
+                fadeUI.ShowAndFadeOutUI();
+            }
         }
     }
 }
