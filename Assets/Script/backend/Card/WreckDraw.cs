@@ -12,7 +12,7 @@ public class WreckDraw : Deck
 
     public void Initialize(string path)
     {
-        Debug.Log($"Tentative de chargement des cartes depuis le chemin : {path}");
+        Debug.Log($"Chargement des cartes wreck depuis le chemin : {path}");
         Card[] loadedCards = Resources.LoadAll<Card>(path);
         Debug.Log($"Nombre de cartes chargées : {loadedCards.Length}");
         if (loadedCards.Length == 0)
