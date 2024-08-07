@@ -2,9 +2,36 @@ using UnityEngine;
 
 public class WeatherDraw : Deck
 {
+    public string resourcePath = "Cards/objects/weather";
+
+    void Start()
+    {
+        Initialize(resourcePath);
+    }
+
+    public void Initialize(string path)
+    {
+        Debug.Log($"Chargement des cartes weather depuis le chemin : {path}");
+        Card[] loadedCards = Resources.LoadAll<Card>(path);
+        Debug.Log($"Nombre de cartes chargées : {loadedCards.Length}");
+        if (loadedCards.Length == 0)
+        {
+            Debug.LogError($"Aucune carte trouvée dans le chemin : {path}");
+            return;
+        }
+
+        foreach (Card card in loadedCards)
+        {
+            AddCard(card);
+        }
+        Shuffle();
+        Debug.Log($"{loadedCards.Length} cartes chargées depuis {path} et mélangées.");
+    }
+
     public override Card DrawCard()
     {
-        Debug.Log("Tirage de carte météo");
-        return base.DrawCard();
+        Card drawnCard = base.DrawCard();
+        Debug.Log($"Tirage de carte météo : {drawnCard.cardName}");
+        return drawnCard;
     }
 }
