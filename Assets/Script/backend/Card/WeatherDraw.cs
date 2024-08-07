@@ -24,7 +24,7 @@ public class WeatherDraw : Deck
         {
             AddCard(card);
         }
-        Shuffle();
+        Shuffle(cards);
         Debug.Log($"{loadedCards.Length} cartes chargées depuis {path} et mélangées.");
     }
 

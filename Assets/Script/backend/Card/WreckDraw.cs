@@ -25,7 +25,7 @@ public class WreckDraw : Deck
         {
             AddCard(card);
         }
-        Shuffle();
+        Shuffle(cards);
         Debug.Log($"{loadedCards.Length} cartes chargées depuis {path} et mélangées.");
     }
 

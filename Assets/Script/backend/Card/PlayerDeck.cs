@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerDeck : NetworkBehaviour
 {
     public Deck deck;
-    public  List<Card> playerHand = new List<Card>();
+    public  List<Card> playerHand;
 
     protected GameManager gameManager;
     protected DiscardPile discardPile;
@@ -16,19 +16,13 @@ public class PlayerDeck : NetworkBehaviour
         gameManager = GameManager.Instance;
         discardPile = gameManager.discardPile;
         wreckDraw = gameManager.wreckDraw;
-        
-    }
 
-
-
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
+        playerHand = new List<Card>();
     }
 
     public void Shuffle()
     {
-        deck.Shuffle();
+        deck.Shuffle(playerHand);
     }
 
     public void  DrawWreckCard()
