@@ -3748,6 +3748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards: []
+  resourcePath: Cards/objects/weather
 --- !u!114 &1483975338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3806,12 +3807,14 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  numberOfWrecksCardsPerPlayer: 4
-  allPlayersInGame: []
-  numberOfPlayersInLobby: 0
+  connectedPlayers: []
   discardPile: {fileID: 1483975339}
   wreckDraw: {fileID: 1483975338}
   weatherDraw: {fileID: 1483975337}
+  numberOfWrecksCardsPerPlayer: 4
+  numberOfWood: 0
+  numberOfFood: 0
+  numberOfWater: 0
   numberOfPlayers: 0
 --- !u!4 &1483975342
 Transform:
