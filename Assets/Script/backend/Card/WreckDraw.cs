@@ -31,6 +31,8 @@ public class WreckDraw : Deck
 
     public override Card DrawCard()
     {
+        // EN : Use the base class method to draw a card
+        // FR : Utilise la méthode de la classe de base pour tirer une carte
         Card drawnCard = base.DrawCard();
         Debug.Log($"Tirage de carte épave : {drawnCard.cardName}");
         return drawnCard;
