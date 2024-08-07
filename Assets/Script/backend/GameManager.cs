@@ -32,6 +32,7 @@ public class GameManager : NetworkBehaviour
     [SyncVar]
     public int numberOfPlayers;
 
+    private GameManager() { }
     public static GameManager Instance
     {
         get
