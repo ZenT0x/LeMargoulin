@@ -108,11 +108,10 @@ GameObject:
   - component: {fileID: 6632897150749240060}
   - component: {fileID: 2556746609592966420}
   - component: {fileID: 1630311119140139639}
+  - component: {fileID: 4107689035611462521}
   - component: {fileID: -1451162126163250430}
   - component: {fileID: 1333650766995944941}
   - component: {fileID: 6086509242560331422}
-  - component: {fileID: 7878426998687874382}
-  - component: {fileID: 4516190636346050593}
   m_Layer: 0
   m_Name: Joueur
   m_TagString: Player
@@ -296,9 +295,21 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  deck: {fileID: 4107689035611462521}
   playerHand: []
-  discardPile: {fileID: 4516190636346050593}
-  wreckDraw: {fileID: 7878426998687874382}
+--- !u!114 &4107689035611462521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3549642231012649220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619d0972adcdb08c3ac61f9b7d049d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
 --- !u!114 &-1451162126163250430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,30 +411,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.24, y: 2.3710458}
   m_EdgeRadius: 0
---- !u!114 &7878426998687874382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3549642231012649220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2eb468ee55e1486fb34215ea50894cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cards: []
-  resourcePath: Cards/objects/wreck
-  currentPPPath: /home/zentox/Unity/LeMargoulin/Assets
---- !u!114 &4516190636346050593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3549642231012649220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe79536654474b70682ccba790e0ab71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

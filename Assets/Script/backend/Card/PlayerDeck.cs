@@ -4,15 +4,19 @@ using System.Collections.Generic;
 
 public class PlayerDeck : NetworkBehaviour
 {
-    private Deck deck = new Deck();
+    public Deck deck;
     public  List<Card> playerHand = new List<Card>();
 
-    public DiscardPile discardPile;
-    public WreckDraw wreckDraw;
-
+    protected GameManager gameManager;
+    protected DiscardPile discardPile;
+    protected WreckDraw wreckDraw;
+    
     void Start()
     {
-
+        gameManager = GameManager.Instance;
+        discardPile = gameManager.discardPile;
+        wreckDraw = gameManager.wreckDraw;
+        
     }
 
 
