@@ -5,9 +5,8 @@ public class Deck : MonoBehaviour
 {
     public List<Card> cards = new List<Card>();
 
-    public virtual void Shuffle()
+    public virtual void Shuffle(List<Card> cards)
     {
-        Debug.Log("Shuffling deck");
         for (int i = 0; i < cards.Count; i++)
         {
             Card temp = cards[i];
@@ -38,6 +37,6 @@ public class Deck : MonoBehaviour
     {
         Debug.Log("Resetting deck");
         cards = new List<Card>(newCards);
-        Shuffle();
+        Shuffle(cards);
     }
 }

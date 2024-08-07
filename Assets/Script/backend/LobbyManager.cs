@@ -5,27 +5,30 @@ using Mirror;
 
 public class LobbyManager : NetworkBehaviour
 {
-    public GameObject owner;
     public List<GameObject> players = new List<GameObject>();
+    public GameObject owner;
     public GameObject LocalPlayer;
     public GameObject startButton;
 
     void Start()
     {
+        // EN : Hide the start button for all players at the beginning
+        // FR : Cache le bouton de démarrage pour tous les joueurs au début
         startButton.SetActive(false);
+        Invoke("UselessFunction", 0.1f);
     }
 
-    // Update is called once per frame
+    private void UselessFunction() {}
+ 
     void Update()
     {
-        var allPlayers = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var player in allPlayers)
+        var PlayerFoundInLobby = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var player in PlayerFoundInLobby)
         {
             if (!players.Contains(player))
             {
                 players.Add(player);
                 owner = players[0];
-
             }
         }
         // If the owner of the lobby is the local player, show the start button
