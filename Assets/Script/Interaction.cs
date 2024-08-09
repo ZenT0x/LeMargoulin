@@ -1,21 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    private bool canPlay = true;
+    protected BrancheManager brancheManager;
+    public bool canPlay = true;
     private bool isBois = false;
+    public int nbBoisActue = 0;
     private bool isBouffe = false;
     public GameObject childBois;
     public GameObject childBouffe;
 
-    // Start is called before the first frame update
     void Start()
     {
+        Invoke("getInstanceOfBrancheManager", 0.1f);
     }
 
-    // Update is called once per frame
+    void getInstanceOfBrancheManager()
+    {
+        brancheManager = BrancheManager.Instance;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown("e"))
@@ -24,6 +28,8 @@ public class Interaction : MonoBehaviour
             {
                 if (childBois.activeSelf)
                 {
+                    // Si le joueur quitte l'interaction volontairement
+                    brancheManager.JeuxFinis();
                     childBois.SetActive(false);
                     canPlay = false;
                 }
@@ -32,6 +38,7 @@ public class Interaction : MonoBehaviour
                     childBois.SetActive(true);
                 }
             }
+
             if (isBouffe)
             {
                 if (childBouffe.activeSelf)
@@ -52,12 +59,12 @@ public class Interaction : MonoBehaviour
         if (col.CompareTag("HitBoxBois") && canPlay)
         {
             isBois = true;
-            childBois = col.transform.Find("CanvasBois")?.gameObject; // Replace with the actual child name
+            childBois = col.transform.Find("CanvasBois")?.gameObject; // Remplacez par le vrai nom du Canvas
         }
         if (col.CompareTag("HitBoxBouffe") && canPlay)
         {
             isBouffe = true;
-            childBouffe = col.transform.Find("CanvasBouffe")?.gameObject; // Replace with the actual child name
+            childBouffe = col.transform.Find("CanvasBouffe")?.gameObject; // Remplacez par le vrai nom du Canvas
         }
     }
 
@@ -65,10 +72,17 @@ public class Interaction : MonoBehaviour
     {
         if (col.CompareTag("HitBoxBois"))
         {
+            // Appelle JeuxFinis quand le joueur quitte la zone
+            if (col.CompareTag("HitBoxBois"))
+            {
+                brancheManager.JeuxFinis();
+            }
+
             isBois = false;
             childBois.SetActive(false);
             canPlay = false;
         }
+
         if (col.CompareTag("HitBoxBouffe"))
         {
             isBouffe = false;
