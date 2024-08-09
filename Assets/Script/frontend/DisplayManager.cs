@@ -13,8 +13,8 @@ public class DisplayManager : MonoBehaviour
 
     void Start()
     {
-        // EN : Wait for the GameManager to be initialized
-        // FR : Attend que le GameManager soit initialisé
+        // EN : Wait for the GameManager to be initialized to avoid null reference
+        // FR : Attend que le GameManager soit initialisé pour éviter les références nulles
         Invoke("getInstanceOfGameManager", 0.1f);
     }
 
