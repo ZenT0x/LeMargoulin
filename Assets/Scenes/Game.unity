@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78301b7563d11554a8bbd33e1654b318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrancheManager: {fileID: 1646707406}
   isTrap: 0
   Canva: {fileID: 1390356358}
 --- !u!114 &91906030
@@ -3179,6 +3180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78301b7563d11554a8bbd33e1654b318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrancheManager: {fileID: 1646707406}
   isTrap: 0
   Canva: {fileID: 1390356358}
 --- !u!1 &1008020366
@@ -3232,6 +3234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78301b7563d11554a8bbd33e1654b318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrancheManager: {fileID: 1646707406}
   isTrap: 0
   Canva: {fileID: 1390356358}
 --- !u!114 &1008020369
@@ -3379,6 +3382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78301b7563d11554a8bbd33e1654b318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrancheManager: {fileID: 1646707406}
   isTrap: 0
   Canva: {fileID: 1390356358}
 --- !u!114 &1010244389
@@ -3550,6 +3554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1646707405}
   - {fileID: 1390356362}
   m_Father: {fileID: 1428965071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4165,7 +4170,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1646707405}
   - {fileID: 890942277}
   - {fileID: 91906028}
   - {fileID: 1010244387}
@@ -29651,6 +29655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78301b7563d11554a8bbd33e1654b318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrancheManager: {fileID: 1646707406}
   isTrap: 0
   Canva: {fileID: 1390356358}
 --- !u!114 &1601916021
@@ -29818,12 +29823,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646707404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1390356362}
+  m_Father: {fileID: 1252086338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -29849,6 +29854,8 @@ MonoBehaviour:
   - {fileID: 1008020366}
   - {fileID: 1601916018}
   nbAlea: 0
+  interaction: {fileID: 0}
+  nbBranche: 0
 --- !u!114 &1646707407
 MonoBehaviour:
   m_ObjectHideFlags: 0

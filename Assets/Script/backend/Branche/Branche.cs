@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Branche : MonoBehaviour
 {
+    public BrancheManager BrancheManager;
     GameObject branche;
     public bool isTrap = false;
     public GameObject Canva;
-    // Start is called before the first frame update
+
     void Start()
     {
         branche = gameObject;
@@ -18,12 +17,18 @@ public class Branche : MonoBehaviour
         if (isTrap)
         {
             Debug.Log("Perdu");
+
+            // Appelle JeuxFinis avec nbBranche = 1 avant la réinitialisation
+            BrancheManager.nbBranche = 1;
+            BrancheManager.JeuxFinis();
+
             branche.SetActive(false);
             Canva.SetActive(false);
         }
         else
         {
             Debug.Log("Gagné");
+            BrancheManager.nbBranche++;
             branche.SetActive(false);
         }
     }
