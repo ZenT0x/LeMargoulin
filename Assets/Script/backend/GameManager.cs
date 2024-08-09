@@ -1,8 +1,8 @@
 using Mirror;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
-using Unity.VisualScripting;
+using System;
+
 
 public class GameManager : NetworkBehaviour
 {
@@ -19,8 +19,9 @@ public class GameManager : NetworkBehaviour
     // FR : Variables du jeu
     [HideInInspector]
     public int numberOfWrecksCardsPerPlayer = 4;
+    public float timeMultiplier = 1f;
 
-    [SyncVar] 
+    [SyncVar]
     public int numberOfWood;
 
     [SyncVar]
@@ -31,6 +32,8 @@ public class GameManager : NetworkBehaviour
 
     [SyncVar]
     public int numberOfPlayers;
+
+    private float elapsedTime = 0f;
 
     private GameManager() { }
     public static GameManager Instance
@@ -48,11 +51,11 @@ public class GameManager : NetworkBehaviour
     void Start()
     {
         if (isServer)
-            {
-                // EN : We wait a little bit to make sure that all players are connected
-                // FR : On attend un peu pour être sûr que tous les joueurs sont connectés
-                Invoke("FindPlayerAndLaunch", 0.1f); 
-            }
+        {
+            // EN : We wait a little bit to make sure that all players are connected
+            // FR : On attend un peu pour être sûr que tous les joueurs sont connectés
+            Invoke("FindPlayerAndLaunch", 0.1f);
+        }
     }
     private void FindPlayerAndLaunch()
     {
@@ -78,7 +81,7 @@ public class GameManager : NetworkBehaviour
                 playerDeck.DrawWreckCard();
             }
         }
-      
+
     }
 
     [Server]
@@ -91,7 +94,40 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    void Update(){
+    void Update()
+    {
+        elapsedTime += Time.deltaTime * timeMultiplier;
+    }
 
+    public float GetElaspseTime()
+    {
+        return elapsedTime;
+    }
+
+    public int GetSecondsOfDay()
+    {
+        float remainingSecondsInDay = elapsedTime % 60;
+        int secondsOfDay = (int)Math.Truncate(remainingSecondsInDay);
+        return secondsOfDay;
+    }
+
+    public int GetMinutesOfDay()
+    {
+        float remainingMinutesInDay = elapsedTime % 3600;
+        int minutesOfDay = (int)Math.Truncate(remainingMinutesInDay / 60);
+        return minutesOfDay;
+    }
+
+    public int GetHoursOfDay()
+    {
+        float remainingHoursInDay = elapsedTime % 86400;
+        int hoursOfDay = (int)Math.Truncate(remainingHoursInDay / 3600);
+        return hoursOfDay;
+    }
+
+    public int GetDayOfGame()
+    {
+        int day = (int)Math.Truncate(elapsedTime / 86400f);
+        return day;
     }
 }

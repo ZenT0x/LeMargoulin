@@ -8,6 +8,7 @@ public class DisplayManager : MonoBehaviour
     public TextMeshProUGUI textWater;
     public TextMeshProUGUI textWood;
     public TextMeshProUGUI textFood;
+    public TextMeshProUGUI textTime;
 
     protected GameManager gameManager;
 
@@ -20,6 +21,7 @@ public class DisplayManager : MonoBehaviour
 
     void getInstanceOfGameManager()
     {
+        // TODO: Find a better way to get the GameManager because it will cause code duplication
         gameManager = GameManager.Instance;
     }
 
@@ -28,5 +30,6 @@ public class DisplayManager : MonoBehaviour
         textFood.text = "Food: " + gameManager.numberOfFood.ToString();
         textWater.text = "Water: " + gameManager.numberOfWater.ToString();
         textWood.text = "Wood: " + gameManager.numberOfWood.ToString();
+        textTime.text = "Day: " + gameManager.GetDayOfGame().ToString() + "   " + gameManager.GetHoursOfDay().ToString() + ":" + gameManager.GetMinutesOfDay().ToString();
     }
 }
