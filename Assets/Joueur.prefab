@@ -68,7 +68,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.606098
+  orthographic size: 8.574274
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -278,6 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72a933350696e0488eaf4ef3977abff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canPlay: 1
+  nbBoisActue: 0
   childBois: {fileID: 0}
   childBouffe: {fileID: 0}
 --- !u!114 &1630311119140139639
